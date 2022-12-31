@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import {
   Bars3CenterLeftIcon,
   PencilIcon,
@@ -9,8 +9,19 @@ import {
 import { BellIcon, CheckIcon } from "@heroicons/react/24/outline";
 import { Menu, Transition, Popover } from "@headlessui/react";
 import Link from "next/link";
+import Skeleton from "react-loading-skeleton";
 
 export default function TopBar({ showNav, setShowNav }) {
+  const [loading, setLoading] = useState(true);
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    setTimeout(() => {
+      setName("Rettson");
+      setLoading(false);
+    }, 1000);
+  }, []);
+
   return (
     <div
       className={`fixed w-full h-16 flex justify-between items-center transition-all duration-[400ms] ${
@@ -106,15 +117,25 @@ export default function TopBar({ showNav, setShowNav }) {
         <Menu as="div" className="relative inline-block text-left">
           <div>
             <Menu.Button className="inline-flex w-full justify-center items-center">
-              <picture>
-                <img
-                  src="/man-smiling.jpg"
-                  className="rounded-full h-8 md:mr-4 border-2 border-white shadow-sm"
-                  alt="profile picture"
-                />
-              </picture>
+              {loading ? (
+                <div className="w-8 md:mr-4">
+                  <Skeleton className="h-8" circle={true} />
+                </div>
+              ) : (
+                <picture>
+                  <img
+                    src="/man-smiling.jpg"
+                    className="rounded-full h-8 md:mr-4 border-2 border-white shadow-sm"
+                    alt="profile picture"
+                  />
+                </picture>
+              )}
               <span className="hidden md:block font-medium text-gray-700">
-                Rettson
+                {name || (
+                  <div className="w-16">
+                    <Skeleton />
+                  </div>
+                )}
               </span>
               <ChevronDownIcon className="ml-2 h-4 w-4 text-gray-700" />
             </Menu.Button>
