@@ -12,7 +12,7 @@ const SideBar = forwardRef(({ showNav }, ref) => {
         <picture>
           <img
             className="w-32 h-auto"
-            src="/ferox-transparent.png"
+            src="/dtco-circle logo-blue.png"
             alt="company logo"
           />
         </picture>
