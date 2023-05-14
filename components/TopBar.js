@@ -108,13 +108,13 @@ export default function TopBar({ showNav, setShowNav }) {
             <Menu.Button className="inline-flex w-full justify-center items-center">
               <picture>
                 <img
-                  src="/man-smiling.jpg"
+                  src="/Nate Chambers headshot.png"
                   className="rounded-full h-8 md:mr-4 border-2 border-white shadow-sm"
                   alt="profile picture"
                 />
               </picture>
               <span className="hidden md:block font-medium text-gray-700">
-                Rettson
+                Nate
               </span>
               <ChevronDownIcon className="ml-2 h-4 w-4 text-gray-700" />
             </Menu.Button>
